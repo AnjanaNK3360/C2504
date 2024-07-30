@@ -1,0 +1,126 @@
+19. To find average of two numbers:
+
+pseudo:
+	Input num1
+	Input num2
+	Sum = num1 + num2
+	Average = Sum/2
+	print Average
+
+20.To find cube of a number
+
+Pseudo:
+	Input num
+	cube = num*num*num
+	print cube
+Pseudo : routine
+	function Findcube(num)
+	  cube = num*num*num
+	return cube
+	
+Pseudo :routineTest
+	function TestFindcube()
+	  Input num
+	  cube = Findcube(num)
+	return cube
+
+15.To find square of a number
+
+Pseudo:
+	function FindSquare(num)
+	  Square = num*num
+	return Square
+
+Pseudo: Routine test
+	function TestFindSquare()
+	  Input num
+	  Square = Findsquare(num)
+	return Square	
+
+9.Swap two numbers 
+Pseudo:
+  Input = num1
+  Input = num2
+  temp = num1
+  num1 = num2
+  num2 = temp
+  print(num1, num2)
+
+Pseudo : routine
+  function Swapnumbers(num1,num2)
+    num1,num2 = num2 ,num1
+  return num1 num2
+
+Pseudo : routin test
+function TestSwapnumbers()
+  Input num1
+  Input num2
+  Swap = Swapnumbers(num1,num2)
+return Swap
+
+28.To check nubmer is divisible by 3
+Pseudo:
+function IsDivisibleBy3(num)
+  if num%3 ==0
+    return True
+  else
+    return False
+
+Pseudo : routine test
+function TestIsDivisibleBy3()
+  Input num
+  if IsDivisibleBy3(num)
+            print "Divisible By 3"
+        else 
+            print "Not Divisible By 3"
+
+
+11.To check nubmer is divisible by 27
+Pseudo:
+function IsDivisibleBy27(num)
+  if num % 27 ==0
+    return True
+  else
+    return False
+
+Pseudo : routine test
+function TestIsDivisibleBy27()
+  Input num
+  if IsDivisibleBy27(num)
+            print "Divisible By 27"
+        else 
+            print "Not Divisible By 27"
+
+14.To print N natural numbers
+Pseudo:
+function PrintNumbers(N)
+  for num in range 1 to N+1
+    print num
+  end
+end
+
+Pseudo : routine test
+function TestPrintNumbers()
+Input N
+numbers = PrintNumbers(N)
+
+1.To check a number palindrome
+Pseudo :
+function CheckPallindrom(strg1)
+  strg2 = reverse(strg1)
+  if strg1 == strg2
+    return True
+  else
+    return False
+Pseudo : routine test
+function TestCheckPallindrom()
+  Input = strg1
+  pallindrom = CheckPallindrom(strg1)
+  if strg1 == strg2
+    print "it is pallidrom"
+  else
+    print "it is  not pallidrom"
+
+
+ 2.To check a number amstrong
+
