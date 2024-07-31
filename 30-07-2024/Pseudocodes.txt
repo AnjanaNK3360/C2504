@@ -311,3 +311,48 @@ Input = limit1
 Input = limit2
 Primenumbers = PrintPrime(limit1,limit2)
 Return Primenumbers
+
+12. To find an element from the array
+fuction FindElement(target)
+  Input = array
+  for element in array
+	if element == target
+		print 'target elment found'
+	else
+		print 'element not found in array'
+
+fuction TestFindElement()
+  Input = target
+  findElement = FindElement(target)
+   return findElement
+
+13. To find the largest number from array
+
+function FindLargest(array)
+  max = array[0]
+  for i in array
+	if (i > max)
+	    max = i
+	end if
+  end for
+  print max
+
+function TestFindLargest()
+  Input array
+  largest = FindLargest(array)
+  return largest
+
+8. To find sum of n numbers
+
+function ToFindSum(N)
+  sum = 0
+  for i in range 1 to N+1
+	Input = num
+	sum = sum + num
+  end for 
+return sum
+
+function TestToFindSum()
+  Input = N
+  findSum = ToFindSum(N)
+return findsum
