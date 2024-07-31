@@ -1,0 +1,117 @@
+1) Write pseudocode for calculating the total cost of items in a shopping cart, including applying a discount if the total exceeds a certain amount.
+
+	Input array   // array with cost price of items
+	int sum = 0
+	int Input = threshold
+	int Input = pertg
+	for a in array
+		sum = sum + a
+	return sum
+	if sum > threshold
+		discount = GivDiscount()
+		totalcost= sum - discount
+	return totalcost
+function GivDiscound(pertg)
+	int Input Sum
+	discountAmount = (Sum*per)/100
+	return discountAmount
+
+
+
+
+
+2)Write pseudocode for a simple calculator that takes two numbers and an operator (+, -, *, /) as input and outputs the result of the operation.
+	
+double Input num1
+double Input num2
+char Input operator(+,-,/,*)
+if operator == "+"
+	result = num1 + num2
+else if operator == "-"
+	result = num1 - num2
+else if operator == "*"
+	result = num1 * num2
+else operator == "/"
+	result = num1 / num2
+return result
+
+
+
+3)Write pseudocode for the FizzBuzz problem: For numbers 1 to 100, print "Fizz" for multiples of 3, "Buzz" for multiples of 5, and "FizzBuzz" for multiples of both.
+
+
+for i in range 1 to 100+1
+	if(i%3==0 and i%5 == 0)
+		print "FizzBuzz"
+	else if (i%3==0)
+		print "Fizz"
+	else if(i%5 == 0)
+		print "Buzz"
+	else 
+		print "i"
+end for
+
+
+
+4)Write pseudocode to check if a given string is a palindrome.
+
+
+  Input = strg1
+  strgnew = strg1.lower()
+  strg2 = strgnew[::-1]
+  if strgnew == strg2
+    print "it is pallindrom"
+  else
+    print "it is not pallindrom"
+
+
+
+5)Write pseudocode to find the maximum value in an array of integers.
+
+Input int array
+max = array[0]
+for each integer i in array
+	if i > max
+		max = i
+print max
+
+
+6)Write pseudocode to manage a simple bank account that allows deposits, withdrawals, and checking the balance.
+
+balance=0
+function BankManagement(choice)
+input Amnt
+	if choice = "Deposit"
+		Deposit()
+	else if choice = "Withdraw"
+		withdraw()
+
+function Deposit(Amnt)
+	if amnt>0
+		balance = balance +amnt
+function withdraw(amnt)
+	if amnt >0 and amnt < = balance
+		balance = balance - amnt
+	print balance
+fuction checkbalance()
+	return balance
+
+
+
+7) sum of first 10 even numbers
+
+SET sum = 0
+FOR i IN RANGE 1 to 11
+	IF i % 2 ==0
+		sum = sum + i
+	END IF
+
+END FOR
+PRINT sum
+
+
+
+
+	
+
+	
