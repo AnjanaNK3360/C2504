@@ -1,0 +1,47 @@
+6.ReadAndCountDoctorsMin6DigitsSalaried(): without array 
+
+
+namespace ReadAndCountDoctorsSalary
+{
+    internal class ReadAndCountDoctorsMin6DigitsSalariedAnjanaNK
+    {
+        static bool IsDoctorSalaryMin6Digits(int doctorSalary)
+        {
+            int salary = doctorSalary;
+
+            int count = 0;
+            while (salary > 0)
+            {
+                int digit = salary % 10;
+                count += 1;
+                salary = salary / 10;
+            }
+
+            return count >= 6;
+        }
+        static void ReadAndCountDoctorsMin6DigitsSalaried()
+        {
+            int count = 0;
+            Console.WriteLine("Enter number of salaries:");
+            int num = int.Parse(Console.ReadLine());
+
+            for (int I = 0; I <= num - 1; I++)
+            {
+               Console.WriteLine("Enter  salary:");
+               int salary = int.Parse(Console.ReadLine());
+                bool isMin6Digits = IsDoctorSalaryMin6Digits(salary);
+                if (isMin6Digits)
+                { 
+                    count += 1;
+                }
+             }
+            Console.WriteLine(count);
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("-------------------ReadAndCountDoctorsMin6DigitsSalaried--------------------");
+            ReadAndCountDoctorsMin6DigitsSalaried();
+            Console.WriteLine("-------------------EndOfReadAndCountDoctorsMin6DigitsSalaried--------------------");
+        }
+    }
+}
