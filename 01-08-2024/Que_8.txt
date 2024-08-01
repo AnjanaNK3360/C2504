@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SumOfSalariesTillZero
+{
+    internal class Program
+    {
+        //Question- 8. ReadAndFindSumOfDoctorsSalariesTillZero() use do..while loop 
+        static void ReadAndFindSumOfDoctorsSalariesTillZero()
+        {
+            int sum = 0;
+            int salary;
+            do
+            {
+                Console.WriteLine("Enter salary:");
+                salary = int.Parse(Console.ReadLine());
+
+                if (!(salary > 0 || salary == 0))
+                {
+                    Console.WriteLine("Input valid salary");
+                    continue;
+                }
+                sum += salary;
+            } while (salary != 0);
+            Console.WriteLine(sum);
+
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("-------------------ReadAndFindSumOfDoctorsSalariesTillZero()--------------------");
+            ReadAndFindSumOfDoctorsSalariesTillZero();
+            Console.WriteLine("-------------------EndOfReadAndFindSumOfDoctorsSalariesTillZero()--------------------");
+
+
+        }
+    }
+}
