@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReadAndFindWithoutArray
+{
+    //Question-7: ReadAndFindMinSalaryOfNDoctors without array ////
+ 
+    internal class Program
+    {
+        static void ReadAndFindMinSalaryOfNDoctors()
+        {
+            int MinSalary = -1;
+            Console.WriteLine("Enter number of salaries:");
+            int num = int.Parse(Console.ReadLine());
+            for (int I = 1; I <= num; I++)
+            {
+                Console.WriteLine("Enter  salary:");
+                int salary = int.Parse(Console.ReadLine());
+                if (I == 1)
+                {
+                    MinSalary = salary;
+                    continue;
+                }
+
+                if (salary < MinSalary)
+                {
+                    MinSalary = salary;
+                }
+            }
+            Console.WriteLine("The Minimum salary is ");
+            Console.WriteLine(MinSalary);
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("-------------------ReadAndFindMinSalaryOfNDoctors()--------------------");
+           
+            ReadAndFindMinSalaryOfNDoctors();
+                Console.WriteLine("-------------------EndOfReadAndFindMinSalaryOfNDoctors()--------------------");
+
+
+        }
+        
+    }
+}
