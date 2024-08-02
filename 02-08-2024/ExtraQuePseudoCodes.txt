@@ -1,0 +1,70 @@
+P4. print series 0, 1, 1, 2, 3, 5, 8, 13, ... N terms 
+    Q10: use for loop
+
+function PrintfibonacciSeries(numOfTerms)
+function TestPrintfibonacciSeries()
+
+----ps----
+function PrintfibonacciSeries(numOfTerms)
+    term1 = 0
+    term2 = 1
+    print term1
+    print term2
+    for I = 1; I <= numOfTerms ; I++ 
+        int next = term1 + term2
+	print next
+        term1 = term2
+        term2 = next 
+    end for 
+function TestPrintfibonacciSeries()    
+Input numOfTerms
+    PrintfibonacciSeries(numOfTerms)
+
+
+P4. print series 0, 1, 1, 2, 3, 5, 8, 13, ... N terms 
+    Q11: use while loop
+
+
+function PrintfibonacciSeriesWhile(numOfTerms)
+    term1 = 0
+    term2 = 1
+    print term1
+    print term2
+    I = 1
+    while I <= numOfTerms
+        int next = term1 + term2
+	print next
+        term1 = term2
+        term2 = next 
+	I++
+    end while 
+
+function TestPrintfibonacciSeriesWhile()    
+Input numOfTerms
+    PrintfibonacciSeriesWhile(numOfTerms)
+
+P4. print series 0, 1, 1, 2, 3, 5, 8, 13, ... N terms 
+    Q11: use Do while loop
+
+
+function PrintFiboDoWhile(numOfTerms)
+    term1 = 0
+    term2 = 1
+    print term1
+    print term2
+    I = 1
+    do  
+        if numOfTerms == 0
+            break
+        then   
+        int next = term1 + term2
+	print next
+        term1 = term2
+        term2 = next 
+	I++
+    end while I <= numOfTerms
+
+function TestPrintFiboDoWhile()
+    Input numOfTerms
+    PrintFiboDoWhile(numOfTerms)
+
