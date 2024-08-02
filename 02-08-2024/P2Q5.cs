@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrintNthTermWhile
 {
-    internal class P1Q5
+    internal class P2Q5
     {
         static int GetNthTerm_21_22_24_27(int N)
         {
