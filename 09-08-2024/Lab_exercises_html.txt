@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MY WEB PAGE</title>
+</head>
+<body>
+    
+    <a href="https://www.google.com">visit google </a>
+
+    <a href="contact.html">Contact us </a>
+    <a href="contact.html"target= "_blank">Contact usNew tab </a>
+
+
+    <p>This is <b>HTML B TAG</b>.</p>
+    <p>This is <strong>HTML B TAG</strong>.</p>
+    <p>This is <i>HTML i TAG</i>.</p>
+    <p>This is <em>HTML em TAG</em>.</p>
+    <p>This is <u>HTML u TAG</u>.</p>
+    <p>This is <strike>HTML TAGS</strike></p>
+ 
+
+    <p>This is <del>HTML del TAG</del>.</p>
+
+
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <ol type = " " start="25">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ol>
+    <p>H<sub>2</sub>O</p>
+    <p>7<sup>th</sup>July</p>
+    <p>In html we can use the &lt;b&gt; tag to make the text bold</p>
+    <p></p>
+    &copy;
+    &reg;
+    &pound;
+    &trade;
+    &euro;
+    &theta;
+    &alpha;
+    &Alpha;
+
+    <table border = "1">
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <th>John</th>
+                <th>john@gamil.com</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>Jane</th>
+                <th>jane@gamil.com</th>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th colspan="3">Total users: 2</th>
+        </tfoot>
+    </table>
+
+
+
+    <table border = "1">
+        <thead>
+            <tr>
+                <th>Day </th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Monday</th>
+                <th>Maths</th>
+                <th>Physics</th>
+                <th>English</th>
+                <th>Chemistry</th>
+                <th>History</th>
+                <th>Biology</th>
+            </tr>
+            <tr>
+                <th>Tuesday</th>
+                <th>Physics</th>
+                <th>English</th>
+                <th>Maths</th>
+                <th>Biology</th>
+                <th>History</th>
+                <th>Chemistry</th>
+            </tr>
+            <tr>
+                <th>Wednesday</th>
+                <th>Maths</th>
+                <th>Physics</th>
+                <th>English</th>
+                <th>Chemistry</th>
+                <th>History</th>
+                <th>Biology</th>
+            </tr>
+            <tr>
+                <th>Thursday</th>
+                <th>History</th>
+                <th>Chemistry</th>
+                <th>Biology</th>
+                <th>Physics</th>
+                <th>Maths</th>
+                <th>English</th>
+            </tr>
+            <tr>
+                <th>Friday</th>
+                <th>Maths</th>
+                <th>Physics</th>
+                <th>English</th>
+                <th>Chemistry</th>
+                <th>History</th>
+                <th>Biology</th>
+            </tr>
+            
+        </tbody>
+        <tfoot>
+           
+        </tfoot>
+    </table>
+
+    <iframe src = "https://www.bing.com"
+    frameborder="1"height="700"width="700"></iframe>
+
+
+
+</body> 
+</html>
