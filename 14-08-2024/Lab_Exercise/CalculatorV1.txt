@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Calculator
+{
+    class Calculator 
+    {
+        public double Number1;
+        public double Number2;
+
+        public void Addition() 
+        {
+            Console.WriteLine(Number1 + Number2);
+        }
+        public void Substraction()
+        {
+            Console.WriteLine(Number1 - Number2);
+        }
+        public void Multiplication()
+        {
+            Console.WriteLine(Number1 * Number2);
+        }
+        public void Division()
+        {
+            Console.WriteLine(Number1 / Number2);
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculator cal = new Calculator()
+            {
+
+                Number1 = 50,
+                Number2 = 5
+            };
+               
+                cal.Addition();
+                       
+                cal.Substraction();
+                       
+                cal.Multiplication();
+                       
+                cal.Division();
+                   
+
+                
+           
+        }
+    }
+}
