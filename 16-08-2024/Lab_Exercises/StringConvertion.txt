@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConvertUpperLower
+{
+    internal class Program
+    {
+        enum Convertions
+        {
+            upper,
+            lower,
+            trim
+        }
+        static void Convert(string text, Convertions action)
+        {
+            if (action == Convertions.upper)
+                Console.WriteLine(text.ToUpper());
+            else if (action == Convertions.lower)
+                Console.WriteLine(text.ToLower());
+            else if (action == Convertions.trim)
+                Console.WriteLine(text.Trim());
+            switch (action)
+            {
+                case Convertions.upper:
+                    Console.WriteLine(text.ToUpper());
+                    break;
+                case Convertions.lower:
+                    Console.WriteLine(text.ToLower());
+                    break;
+                case Convertions.trim:
+                    Console.WriteLine(text.Trim());
+                    break;
+            }
+
+        }
+        static void Main()
+        {
+
+            Convert("Anjana", Convertions.upper);
+
+
+
+        }
+    }
+}
