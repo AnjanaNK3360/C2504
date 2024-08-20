@@ -1,0 +1,140 @@
+///ABSTRACT CLASS AND INTERFACE DIFFERENCE
+
+Abstract class:
+
+An abstract class is a class that cannot be instantiated on its own and is designed to be inherited by other classes.
+It can contain both abstract members (without implementation) and concrete members (with implementation).
+
+
+public abstract class Animal
+{
+    public string Name { get; set; }
+
+    public abstract void MakeSound();  // Abstract method
+
+    public void Sleep()                // Concrete method
+    {
+        Console.WriteLine($"{Name} is sleeping.");
+    }
+}
+
+public class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Bark!");
+    }
+}
+
+
+
+Interface:
+An interface is a contract that defines a set of methods, properties, events, or indexers that a class or struct must implement. 
+Interfaces do not contain any fields, and historically they did not contain any implementation.
+
+public interface IAnimal
+{
+    void MakeSound();  // Abstract method
+
+    void Sleep()        // Default implementation
+    {
+        Console.WriteLine("Sleeping...");
+    }
+}
+
+public class Cat : IAnimal
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Meow!");
+    }
+}
+
+
+Differences:
+
+Implementation vs. Contract:
+
+Abstract Class: Can provide both a contract (abstract methods) and an implementation (concrete methods). It is partially implemented.
+Interface: Initially provided only a contract, but now can also include implementations (with default methods). 
+It is a blueprint with no inherent state or behavior, except through default methods.
+
+Multiple Inheritance:
+
+Abstract Class: A class can inherit only one abstract class due to single inheritance in C#.
+Interface: A class or struct can implement multiple interfaces, allowing for more flexible and modular design.
+
+
+
+
+
+///CHANGES IN INTERFACE IN OLDER AND NEW VERSIONS
+
+In older versions of C#, interfaces are used to define a contract, and all methods must be implemented by the classes that implement the interface.
+
+// Interface definition (old version)
+public interface IGreeting
+{
+    void Greet();
+}
+
+// Implementing class (old version)
+public class EnglishGreeting : IGreeting
+{
+    public void Greet()
+    {
+        Console.WriteLine("Hello!");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        IGreeting greeting = new EnglishGreeting();
+        greeting.Greet();  // Output: Hello!
+    }
+}
+
+
+In the latest version of C#, interfaces can include default method implementations and static members. Here's a simplified example using these features:
+
+
+// Interface definition (new version, C# 12.0)
+public interface IGreeting
+{
+    // Default implementation
+    void Greet() => Console.WriteLine("Default Greeting!");
+
+    // Static member (C# 11.0+)
+    static string Language => "English";
+}
+
+// Implementing class (new version)
+public class EnglishGreeting : IGreeting
+{
+    // Optional: Override default implementation
+    public void Greet()
+    {
+        Console.WriteLine("Hello!");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        IGreeting greeting = new EnglishGreeting();
+        greeting.Greet();  // Output: Hello!
+
+        Console.WriteLine(IGreeting.Language);  // Output: English
+    }
+}
+
+
+Fields and Constructors:
+
+Abstract Class: Can have fields, and constructors to manage state.
+Interface: Cannot have instance fields or constructors. However, starting from C# 11.0, static fields can be defined.
