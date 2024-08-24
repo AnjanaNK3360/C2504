@@ -1,0 +1,162 @@
+1) Problem Statement: Patient Medication Tracker
+- Define a class: `PatientMedication` with the following properties:
+- `PatientID` (integer)
+- `Medication` (string)
+- `Dosage` (double, in milligrams)
+- `Duration` (integer, in days)
+- Tasks:
+1. Data Collection:
+- Read N `patientMedications` from the keyboard.
+2. Find Minimum Duration:
+- Display the patient medication with the shortest duration.
+Solve in time complexity of O(N).
+Dont use built-in C# sorting or LINQ.
+3. Find Second Highest Dosage:
+- Display the patient medication with the second highest dosage.
+Solve in time complexity of O(N).
+Dont use built-in C# sorting or LINQ.
+4. Sort by PatientID:
+- Implement and call your own sorting algorithm.
+Dont use built-in C# sorting or LINQ.
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PatientMedicationTracker
+{
+    class PatientMedication
+    {
+        public int PatientID { get; set; }
+        public string Medication { get; set; }
+        public double Dosage {  get; set; }
+        public int Duration { get; set; }
+
+        public PatientMedication(int patientID, string medication, double dosage, int duration) 
+        {
+            PatientID = patientID;
+            Medication = medication;
+            Dosage = dosage;
+            Duration = duration;
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the number of patients ");
+            int N = int.Parse(Console.ReadLine());
+            PatientMedication[] patientMedications = new PatientMedication[N];
+
+            for (int i = 0; i < N; i++)
+            {
+                Console.Write("Enter PatientID: ");
+                int patientID = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Medication: ");
+                string medication = Console.ReadLine();
+
+                Console.Write("Enter Dosage:  ");
+                double dosage = double.Parse(Console.ReadLine());
+
+                Console.Write("Enter Duration: ");
+                int duration = int.Parse(Console.ReadLine());
+
+                patientMedications[i] = new PatientMedication(patientID, medication, dosage, duration);
+
+            }
+
+            FindMinimumDuration(patientMedications);
+            FindSecondHighestDosage(patientMedications);
+            SelectionSortByPatientID(patientMedications);
+
+            Console.WriteLine("Sorted Patient Medications by PatientID:");
+            foreach (var medication in patientMedications)
+            {
+                Console.WriteLine($"PatientID: {medication.PatientID}, Medication: {medication.Medication}, Dosage: {medication.Dosage}, Duration: {medication.Duration}");
+            }
+        }
+        public static void FindMinimumDuration(PatientMedication[] medications)
+        {
+            PatientMedication minDurationMedication = medications[0];
+
+            foreach (var medication in medications)
+            {
+                if (medication.Duration < minDurationMedication.Duration)
+                {
+                    minDurationMedication = medication;
+                }
+            }
+
+            Console.WriteLine("Patient Medication with the shortest duration:");
+            Console.WriteLine($"PatientID: {minDurationMedication.PatientID}, Medication: {minDurationMedication.Medication}, Dosage: {minDurationMedication.Dosage}, Duration: {minDurationMedication.Duration}");
+        }
+        public static void FindSecondHighestDosage(PatientMedication[] medications)
+        {
+            if (medications.Length < 2)
+            {
+                Console.WriteLine("Not enough data to determine the second highest dosage.");
+                return;
+            }
+
+            double highestDosage = double.MinValue;
+            double secondHighestDosage = double.MinValue;
+
+            foreach (var medication in medications)
+            {
+                if (medication.Dosage > highestDosage)
+                {
+                    secondHighestDosage = highestDosage;
+                    highestDosage = medication.Dosage;
+                }
+                else if (medication.Dosage > secondHighestDosage && medication.Dosage < highestDosage)
+                {
+                    secondHighestDosage = medication.Dosage;
+                }
+            }
+
+            if (secondHighestDosage == double.MinValue)
+            {
+                Console.WriteLine("No second highest dosage found.");
+                return;
+            }
+
+            foreach (var medication in medications)
+            {
+                if (medication.Dosage == secondHighestDosage)
+                {
+                    Console.WriteLine("Patient Medication with the second highest dosage:");
+                    Console.WriteLine($"PatientID: {medication.PatientID}, Medication: {medication.Medication}, Dosage: {medication.Dosage}, Duration: {medication.Duration}");
+                    return;
+                }
+            }
+        }
+        public static void SelectionSortByPatientID(PatientMedication[] medications)
+        {
+            int n = medications.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (medications[j].PatientID < medications[minIndex].PatientID)
+                    {
+                        minIndex = j;
+                    }
+                }
+                // Swap
+                if (minIndex != i)
+                {
+                    PatientMedication temp = medications[i];
+                    medications[i] = medications[minIndex];
+                    medications[minIndex] = temp;
+                }
+            }
+        }
+    }
+}
