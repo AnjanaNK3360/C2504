@@ -160,3 +160,182 @@ namespace PatientMedicationTracker
         }
     }
 }
+
+=========================================================================================================
+=========================================================================================================
+
+2)Problem Statement: Interface and Inheritance in Hospital Equipment Management
+- Define an interface: `IServiceable` with the following methods:
+- `Service()` (void)
+- `GetServiceStatus()` (string)
+- Define a base class: `Equipment` with properties:
+- `EquipmentID` (integer), `Name` (string)
+- Define a derived class: `DiagnosticEquipment` that inherits from `Equipment` and implements `IServiceable`:
+- Additional Property: `LastServiceDate` (DateTime)
+- Implement `Service()` to update the service date.
+- Implement `GetServiceStatus()` to return whether the equipment is due for service.
+- Define another derived class: `SurgicalEquipment` that also inherits from `Equipment` and implements `IServiceable`:
+- Additional Property: `UsageCount` (integer)
+- Implement `Service()` to reset the usage count.
+- Implement `GetServiceStatus()` to return service status based on usage.
+- Tasks:
+1. Manage Equipment:
+- Read details for N `equipments` of both types (Diagnostic and Surgical).
+2. Perform Service:
+- Call `Service()` on all equipment and display the updated status.
+3. Service Status Check:
+- Implement a method to display the service status of all equipment.
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EquipmentManagement
+{
+    public interface IServiceable
+    {
+        void Service();
+        string GetServiceStatus();
+    }
+    public enum EquipmentType
+    {
+        Diagnostic = 1,
+        Surgical = 2
+    }
+    public abstract class Equipment
+    {
+        public int EquipmentID { get; set; }
+        public string Name { get; set; }
+        public EquipmentType Type { get; set; }
+    }
+    public class DiagnosticEquipment : Equipment, IServiceable
+    {
+        public DateTime LastServiceDate { get; set; }
+
+        public void Service()
+        {
+            LastServiceDate = DateTime.Now; ;
+            Console.WriteLine($"{Name} - service date updated.");
+        }
+
+        public string GetServiceStatus()
+        {
+            //return $"{Name} - Getting Service Status based on service date.";
+            if ((DateTime.Now - LastServiceDate).Days > 90)
+            {
+                return $"{Name} is due for service.";
+            }
+            else
+            {
+                return $"{Name} is not due for service.";
+            }
+
+        }
+    }
+
+    public class SurgicalEquipment : Equipment, IServiceable
+    {
+        public int UsageCount { get; set; }
+
+        public void Service()
+        {
+            UsageCount = 0;
+            Console.WriteLine($" Equipment {Name} Usage count reset and Service Done");
+        }
+
+        public string GetServiceStatus()
+        {
+            if (UsageCount > 1000)
+            {
+                return $"{Name} is due for service.";
+            }
+            else
+            {
+                return $"{Name} is not due for service.";
+            }
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the number of equipment items: ");
+            int N = int.Parse(Console.ReadLine());
+
+            Equipment[] equipments = new Equipment[N];
+
+            for (int i = 0; i < N; i++)
+            {
+                Console.Write("Enter Equipment Type (1-- Diagnostic, 2-- Surgical): ");
+                int typeInput = int.Parse(Console.ReadLine());
+                EquipmentType type = (EquipmentType)typeInput;
+
+                Console.Write("Enter EquipmentID: ");
+                int id = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter Name: ");
+                string name = Console.ReadLine();
+
+                if (type == EquipmentType.Diagnostic)
+                {
+                    Console.Write("Enter Last service date (yyyy-MM-dd): ");
+                    DateTime date = DateTime.Parse(Console.ReadLine());
+                    DiagnosticEquipment diagEquip = new DiagnosticEquipment
+                    {
+                        EquipmentID = id,
+                        Name = name,
+                        LastServiceDate = date
+                    };
+                    equipments[i] = diagEquip;
+                }
+                else if (type == EquipmentType.Surgical)
+                {
+                    Console.Write("Enter Usagecount: ");
+                    int usage = int.Parse(Console.ReadLine());
+                    SurgicalEquipment surgEquip = new SurgicalEquipment
+                    {
+                        EquipmentID = id,
+                        Name = name,
+                        UsageCount = usage
+                    };
+                    equipments[i] = surgEquip;
+                }
+                else
+                {
+                    Console.WriteLine("invalid type.");
+                    i--;
+                }
+            }
+
+            PerformService(equipments);
+            DisplayServiceStatus(equipments);
+
+
+        }
+
+        public static void PerformService(Equipment[] equipments)
+        {
+            foreach (var equipment in equipments)
+            {
+                if (equipment is IServiceable serviceable)
+                {
+                    serviceable.Service();
+                }
+            }
+        }
+        public static void DisplayServiceStatus(Equipment[] equipments)
+        {
+            foreach (var equipment in equipments)
+            {
+                if (equipment is IServiceable serviceable)
+                {
+                    Console.WriteLine(serviceable.GetServiceStatus());
+                }
+            }
+        }
+    }
+}
