@@ -33,9 +33,10 @@ namespace Delegates
             Predicate<int> z = IsEven;// bool return type and single parameter
 
             x(4, 5);
-            y(4, 5);
-            y1(4);
-            z(7);
+            x(4, 5); 
+            Console.WriteLine("Mul: " + y(4, 5)); 
+            Console.WriteLine("IsEven (y1): " + y1(4)); 
+            Console.WriteLine("IsEven (z): " + z(7));
 
 
         }
