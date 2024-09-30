@@ -1,0 +1,18 @@
+﻿<Window x:Class="Example13Project.SquareCalcWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Example13Project"
+        mc:Ignorable="d"
+        Title="SquareCalcWindow" Height="450" Width="800">
+    <Canvas>
+        <TextBlock x:Name="lblNumber" Canvas.Left="247" TextWrapping="Wrap" Text="Number" Canvas.Top="100"/>
+        <TextBox x:Name="txtNumber" Canvas.Left="340" TextWrapping="Wrap" Canvas.Top="98" Width="120"/>
+        <TextBlock x:Name="lblResult" Canvas.Left="247" TextWrapping="Wrap" Text="Result" Canvas.Top="162"/>
+        <TextBox x:Name="txtResult" Canvas.Left="340" TextWrapping="Wrap" Canvas.Top="160" Width="120"/>
+        <Button x:Name="btnFindSquare" Content="Find Square" Canvas.Left="340" Canvas.Top="226" HorizontalAlignment="Left" VerticalAlignment="Center" Width="93" Click="btnFindSquare_Click" FontWeight="Bold"/>
+        <Button x:Name="btnFindCube" Content="Find Cube" Canvas.Left="464" Canvas.Top="226" HorizontalAlignment="Center" VerticalAlignment="Center" Width="94" Click="btnFindCube_Click" FontWeight="Bold"/>
+
+    </Canvas>
+</Window>
