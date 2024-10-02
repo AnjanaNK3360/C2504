@@ -1,0 +1,15 @@
+﻿<Window x:Class="CounterProject.CounterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CounterProject"
+        mc:Ignorable="d"
+        Title="CounterWindow" Height="450" Width="800" Closed="Window_Closed">
+    <Canvas>
+        <TextBox x:Name="txtCounter" Canvas.Left="322" TextWrapping="Wrap" Text="{Binding NewCounter.Number}" Canvas.Top="62" Width="108" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" TextAlignment="Center"/>
+        <Button x:Name="btnPlus" Content="+" Canvas.Left="271" Canvas.Top="155" HorizontalAlignment="Left" Height="52" VerticalAlignment="Center" Width="82" FontSize="18" FontWeight="Bold" Command="{Binding PlusCommand}"/>
+        <Button x:Name="btnMinus" Content="-" Canvas.Left="400" Canvas.Top="155" HorizontalAlignment="Left" VerticalAlignment="Center" Height="52" Width="82" FontSize="18" FontWeight="Bold" Command="{Binding MinusCommand}"/>
+
+    </Canvas>
+</Window>
