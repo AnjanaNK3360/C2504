@@ -1,1 +1,138 @@
+PHASE 2 -ASSESSMENT
+
+MINI-CASE STUDY - BANK PROJECT
+======================================
+
+AccountManagementWindow.xaml
+=============================
+
+<Window x:Class="BankProject.AccountManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankProject"
+        mc:Ignorable="d"
+        Title="AccountManagementWindow" Height="450" Width="800">
+    <Canvas>
+        <Button x:Name="btnAdd" Content="ADD" Canvas.Left="210" Canvas.Top="260" HorizontalAlignment="Center" VerticalAlignment="Top" Width="102" Height="57"/>
+        <Button x:Name="btnEdit" Content="EDIT" Canvas.Left="464" Canvas.Top="260" HorizontalAlignment="Center" Height="57" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.48,-0.115"/>
+        <DataGrid x:Name="dgAccount" Height="201" Width="449" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="169" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Account No"/>
+                <DataGridTextColumn Header="Name"/>
+                <DataGridTextColumn Header="Account Type"/>
+                <DataGridTextColumn Header="Email"/>
+                <DataGridTextColumn Header="Phone No"/>
+                <DataGridTextColumn Header="Address"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Canvas>
+</Window>
+
+
+----------------------------------------------------------------------
+
+AddAccountWindow.xaml
+======================
+
+<Window x:Class="BankProject.AddAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankProject"
+        mc:Ignorable="d"
+        Title="AddAccountWindow" Height="450" Width="800">
+    <Canvas>
+        <TextBlock x:Name="lblAccountNo" Canvas.Left="210" TextWrapping="Wrap" Text="Account No" Canvas.Top="33" HorizontalAlignment="Center" VerticalAlignment="Top" Width="106"/>
+        <TextBox x:Name="txtAccountNo" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="33" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblName" Canvas.Left="210" TextWrapping="Wrap" Text="Name" Canvas.Top="75" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="75" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblEmail" Canvas.Left="210" TextWrapping="Wrap" Text="Email" Canvas.Top="162" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEmail" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="162" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblAddress" Canvas.Left="210" TextWrapping="Wrap" Text="Address" Canvas.Top="205" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAddress" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="205" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblPhone" Canvas.Left="210" TextWrapping="Wrap" Text="Phone No" Canvas.Top="250" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPhone" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="250" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblAccountType" Canvas.Left="210" TextWrapping="Wrap" Text="Account Type" Canvas.Top="117" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblRate" Canvas.Left="210" TextWrapping="Wrap" Text="Interest Rate" Canvas.Top="288" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbRate" Canvas.Left="402" Canvas.Top="287" Width="153" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+            <ComboBoxItem Content="7"/>
+            <ComboBoxItem Content="8"/>
+            <ComboBoxItem Content="9"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="11"/>
+            <ComboBoxItem Content="12"/>
+
+        </ComboBox>
+        <TextBlock x:Name="lblStatus" Canvas.Left="210" TextWrapping="Wrap" Text="Status" Canvas.Top="330" Width="106" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chkActive" Content="Active" Canvas.Left="406" Canvas.Top="331" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rdSavings" Content="Savings" Canvas.Left="401" Canvas.Top="117" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <RadioButton x:Name="rdCurrent" Content="Current" Canvas.Left="490" Canvas.Top="117" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="btnCreateAccount" Content="Create Account" Canvas.Left="402" Canvas.Top="367" HorizontalAlignment="Center" VerticalAlignment="Top" Width="153" Height="45"/>
+
+    </Canvas>
+</Window>
+----------------------------------------------------------------------------------------------------------------------------
+
+
+EditAccountWindow.xaml
+=========================
+
+<Window x:Class="BankProject.EditAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankProject"
+        mc:Ignorable="d"
+        Title="EditAccountWindow" Height="450" Width="800">
+    <Canvas>
+        <TextBlock x:Name="lblAccountNo" Canvas.Left="210" TextWrapping="Wrap" Text="Account No" Canvas.Top="33" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtAccountNo" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="33" Width="155" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <TextBlock x:Name="lblName" Canvas.Left="210" TextWrapping="Wrap" Text="Name" Canvas.Top="75" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtName" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="75" Width="155" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <TextBlock x:Name="lblEmail" Canvas.Left="210" TextWrapping="Wrap" Text="Email" Canvas.Top="162" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtEmail" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="162" Width="155" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <TextBlock x:Name="lblAddress" Canvas.Left="210" TextWrapping="Wrap" Text="Address" Canvas.Top="205" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtAddress" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="205" Width="155" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="lblPhone" Canvas.Left="210" TextWrapping="Wrap" Text="Phone No" Canvas.Top="250" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtPhone" Canvas.Left="400" TextWrapping="Wrap" Text="TextBox" Canvas.Top="250" Width="155" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <TextBlock x:Name="lblAccountType" Canvas.Left="210" TextWrapping="Wrap" Text="Account Type" Canvas.Top="117" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="lblRate" Canvas.Left="210" TextWrapping="Wrap" Text="Interest Rate" Canvas.Top="288" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox x:Name="cmbRate" Canvas.Left="402" Canvas.Top="287" Width="153" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+            <ComboBoxItem Content="7"/>
+            <ComboBoxItem Content="8"/>
+            <ComboBoxItem Content="9"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="11"/>
+            <ComboBoxItem Content="12"/>
+
+        </ComboBox>
+        <TextBlock x:Name="lblStatus" Canvas.Left="210" TextWrapping="Wrap" Text="Status" Canvas.Top="330" Width="106" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <CheckBox x:Name="chkActive" Content="Active" Canvas.Left="406" Canvas.Top="331" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <RadioButton x:Name="rdSavings" Content="Savings" Canvas.Left="401" Canvas.Top="117" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <RadioButton x:Name="rdCurrent" Content="Current" Canvas.Left="490" Canvas.Top="117" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+        <Button x:Name="btnUpdate" Content="Update" Canvas.Left="402" Canvas.Top="367" Width="153" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+    </Canvas>
+</Window>
+--------------------------------------------------------------------------------------
+
 
