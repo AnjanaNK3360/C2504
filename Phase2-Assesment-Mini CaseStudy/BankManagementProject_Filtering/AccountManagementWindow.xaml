@@ -1,0 +1,42 @@
+﻿<Window x:Class="BankManagementProject.AccountManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankManagementProject"
+        mc:Ignorable="d"
+        Title="AccountManagementWindow" Height="450" Width="800" Closing="Window_Closing">
+    <Canvas>
+        <Button x:Name="btnAdd" Content="ADD" Canvas.Left="210" Canvas.Top="330" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" Width="102" Height="57" Click="btnAdd_Click" Background="#FF566DC8"/>
+        <Button x:Name="btnEdit" Content="EDIT" Canvas.Left="380" Canvas.Top="330" HorizontalAlignment="Center" 
+                Height="57" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.48,-0.115" Click="btnEdit_Click" Background="#FF566DC8"/>
+        <DataGrid x:Name="grdAccount" Height="201" Width="719" SelectionMode="Single" ItemsSource="{Binding FilteredAccounts}"
+                  HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="29" 
+                  AutoGenerateColumns="False" SelectedItem="{Binding SelectedAccount , Mode=TwoWay}" IsReadOnly="True" 
+                  AreRowDetailsFrozen="True" Canvas.Top="92">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Account No" Binding="{Binding AccNo}"/>
+                <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Balance"  Binding="{Binding Balance}"/>
+                <DataGridTextColumn Header="Account Type"  Binding="{Binding AccType}"/>
+                <DataGridTextColumn Header="Email"  Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Phone No"  Binding="{Binding PhNo}"/>
+                <DataGridTextColumn Header="Address"  Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="IsActive" Binding="{Binding IsActive}"/>
+                <DataGridTextColumn Header="Interest Percentage" Binding="{Binding InterestPercentage}"/>
+                <DataGridTextColumn Header="Transaction Count" Binding="{Binding TransactionCount}"/>
+                <DataGridTextColumn Header="Last Transaction Date" Binding="{Binding LastTransactionDate}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnDelete" Content="DELETE" Canvas.Left="524" Canvas.Top="330" 
+            Height="57" Width="100" RenderTransformOrigin="0.48,-0.115" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnDelete_Click" Command="{Binding DeleteCommand}" Background="#FF566DC8"/>
+        <TextBlock Canvas.Left="72" TextWrapping="Wrap" Text=" Account Type" Canvas.Top="26" Height="18" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox x:Name="cmbFilter" Canvas.Left="246" Canvas.Top="22"  Width="120" SelectionChanged="cmbFilter_SelectionChanged">
+            <ComboBoxItem Content="All"/>
+            <ComboBoxItem Content="Savings"/>
+            <ComboBoxItem Content="Current"/>
+        </ComboBox>
+    </Canvas>
+</Window>
