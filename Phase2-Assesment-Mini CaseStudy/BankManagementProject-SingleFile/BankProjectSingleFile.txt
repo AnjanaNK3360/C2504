@@ -106,13 +106,89 @@ AccountManagementWindow.xaml
         <Button x:Name="btnDelete" Content="DELETE" Canvas.Left="524" Canvas.Top="330" 
             Height="57" Width="100" RenderTransformOrigin="0.48,-0.115" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnDelete_Click" Command="{Binding DeleteCommand}" Background="#FF566DC8"/>
         <TextBlock Canvas.Left="72" TextWrapping="Wrap" Text=" Account Type" Canvas.Top="26" Height="18" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <ComboBox x:Name="cmbFilter" Canvas.Left="246" Canvas.Top="22"  Width="120" SelectionChanged="cmbFilter_SelectionChanged">
+        <ComboBox x:Name="cmbFilter" Canvas.Left="246" Canvas.Top="22"  Width="120" Text="{Binding SelectedFilter , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <ComboBoxItem Content="All"/>
             <ComboBoxItem Content="Savings"/>
             <ComboBoxItem Content="Current"/>
         </ComboBox>
     </Canvas>
 </Window>
+-----------------------------------------------------------------
+AccountManagementWindow.xaml.cs
+===============================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+
+namespace BankManagementProject
+{
+    /// <summary>
+    /// Interaction logic for AccountManagementWindow.xaml
+    /// </summary>
+    public partial class AccountManagementWindow : Window
+    {
+        public AccountManagementWindow()
+        {
+            InitializeComponent();
+            DataContext = AccountConfig.VueModel;
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AccountConfig.FrmAddAccount.Show();
+            
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (grdAccount.SelectedIndex == -1)
+            {
+                var result = MessageBox.Show(messageBoxText: "Please select Account details to edit",
+                    caption: "Alert",
+                    button: MessageBoxButton.OK,
+                    icon: MessageBoxImage.Information);
+                return;
+            }
+            AccountConfig.FrmEditAccount.Show();
+
+        }
+
+       
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (grdAccount.SelectedIndex == -1)
+            {
+                var result = MessageBox.Show(messageBoxText: "Please select Account details to Delete",
+                    caption: "Alert",
+                    button: MessageBoxButton.OK,
+                    icon: MessageBoxImage.Information);
+                return;
+            }
+            AccountViewModel viewModel = new AccountViewModel();
+            viewModel.Delete();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
+    }
+}
+
 ----------------------------------------------------------------
 AccountMemoryRepo.cs
 ==================
@@ -546,7 +622,6 @@ namespace BankManagementProject
         }
 
         private int _amount;
-
         public int Amount
         {
             get { return _amount; }
@@ -592,6 +667,12 @@ namespace BankManagementProject
                 OnPropertyChanged(nameof(FilteredAccounts));
             }
         }
+        private ObservableCollection<AccountModel> _filteredAccounts;
+        public ObservableCollection<AccountModel> FilteredAccounts
+        {
+            get => _filteredAccounts;
+            set { _filteredAccounts = value; OnPropertyChanged(nameof(FilteredAccounts)); }
+        }
 
 
         private string _selectedFilter;
@@ -602,49 +683,11 @@ namespace BankManagementProject
             {
                 _selectedFilter = value;
                 OnPropertyChanged(nameof(SelectedFilter));
-                OnPropertyChanged(nameof(FilteredAccounts));
+                FilterAccounts();
+                //OnPropertyChanged(nameof(FilteredAccounts));
             }
         }
 
-        public ObservableCollection<AccountModel> FilteredAccounts
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(SelectedFilter) || SelectedFilter == "All")
-                    return Accounts;
-                else if (SelectedFilter == "Savings")
-                    return new ObservableCollection<AccountModel>(Accounts.Where(a => a.AccType == "Savings"));
-                else if (SelectedFilter == "Current")
-                    return new ObservableCollection<AccountModel>(Accounts.Where(a => a.AccType == "Current"));
-                else
-                    return new ObservableCollection<AccountModel>();
-            }
-        }
-
-        //public ObservableCollection<AccountModel> FilteredAccounts
-        //{
-        //    get
-        //    {
-        //        if (string.IsNullOrEmpty(SelectedFilter) || SelectedFilter == "All")
-        //            return Accounts;
-        //        else if (SelectedFilter == "Savings")
-        //            return new ObservableCollection<AccountModel>(Accounts.Where(a => string.Equals(a.AccType, "savings", StringComparison.OrdinalIgnoreCase)));
-        //        else if (SelectedFilter == "Current")
-        //            return new ObservableCollection<AccountModel>(Accounts.Where(a => string.Equals(a.AccType, "current", StringComparison.OrdinalIgnoreCase)));
-        //        else
-        //            return new ObservableCollection<AccountModel>();
-        //    }
-        //}
-
-
-
-        //public ObservableCollection<AccountModel> Accounts
-        //{
-        //    get
-        //    {
-        //        return _repo.ReadAllAccount();
-        //    }
-        //}
 
         public ICommand CreateCommand { get; }
         public ICommand UpdateCommand { get; }
@@ -657,6 +700,7 @@ namespace BankManagementProject
 
         public AccountViewModel()
         {
+            FilteredAccounts = new ObservableCollection<AccountModel>(Accounts);
             this.NewAccount = new AccountModel
             {
                 AccNo = 0,
@@ -672,7 +716,9 @@ namespace BankManagementProject
                 LastTransactionDate = DateTime.Now
             };
 
-            
+           
+
+
 
             CreateCommand = new RelayCommand(Create);
             UpdateCommand = new RelayCommand(Update);
@@ -680,8 +726,20 @@ namespace BankManagementProject
             WithdrawCommand = new RelayCommand(Withdraw);
             DepositCommand = new RelayCommand(Deposit);
         }
+        private void FilterAccounts()
+        {
+            if (SelectedFilter == "All" || string.IsNullOrEmpty(SelectedFilter))
+            {
+                FilteredAccounts = new ObservableCollection<AccountModel>(Accounts);
+            }
+            else
+            {
+                var filtered = Accounts.Where(acc => acc.AccType == SelectedFilter).ToList();
+                FilteredAccounts = new ObservableCollection<AccountModel>(filtered);
+            }
+        }
 
-        
+
 
         public void Create()
         {
