@@ -1,0 +1,70 @@
+﻿<Window x:Class="ProjectSMAD.ProdPerfMonitoringWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectSMAD"
+        mc:Ignorable="d"
+        Title="ProdPerfMonitoringWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header Section -->
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="PRODUCTION PERFORMANCE MONITORING" VerticalAlignment="Top" Height="57" Width="798" TextAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="White">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFC05757" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+
+        <!-- Metrics Section -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Production Rates Section -->
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+                <TextBlock FontWeight="Bold" FontSize="18">Production Rates</TextBlock>
+                <TextBlock FontSize="24" HorizontalAlignment="Center">1000 units/hour</TextBlock>
+            </StackPanel>
+
+            <!-- Efficiency Section -->
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+                <TextBlock FontWeight="Bold" FontSize="18">Efficiency</TextBlock>
+                <TextBlock FontSize="24" HorizontalAlignment="Center">85%</TextBlock>
+            </StackPanel>
+
+            <!-- Quality Metrics Section -->
+            <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+                <TextBlock FontWeight="Bold" FontSize="18">Quality Metrics</TextBlock>
+                <TextBlock FontSize="24" HorizontalAlignment="Center">95%</TextBlock>
+            </StackPanel>
+
+            <!-- Historical Performance Data Analysis Section -->
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+                <TextBlock FontWeight="Bold" FontSize="18">Historical Performance Data Analysis</TextBlock>
+                <TextBlock FontSize="24" HorizontalAlignment="Center">View Trends</TextBlock>
+            </StackPanel>
+
+            <!-- Visualization Section -->
+            <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+                <!-- Add visualization controls here, such as charts or graphs -->
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
